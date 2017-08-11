@@ -2,12 +2,12 @@
 
 function run_with_jmx {
    echo "Habilitando jmx..."
-   java -jar -Xms${MIN_MEM}m -Xmx${MAX_MEM}m -Dcom.sun.management.jmxremote -Dcom.sun.$
+   java -jar -Xms${MIN_MEM}m -Xmx${MAX_MEM}m -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=$JMX_PORT -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Djava.rmi.server.hostname=$HOSTNAME -Dspring.datasource.url=jdbc:mariadb://$IP_DB:3306/$NAME_DB?createDatabaseIfNotExist=1 -Dspring.datasource.username=root -Dspring.datasource.password=$PASS_DB -Dserver.port=8080 -Dlogging.file=/var/log/bbjetmobile-$NAME_DB.log bbjet-mobile-api-*.jar
 }
 
 function run_without_jmx {
    echo "Corriendo sin jmx"
-   java -jar -Xms${MIN_MEM}m -Xmx${MAX_MEM}m -Dspring.datasource.url=jdbc:mariadb://$I$
+   java -jar -Xms${MIN_MEM}m -Xmx${MAX_MEM}m -Dspring.datasource.url=jdbc:mariadb://$IP_DB:3306/$NAME_DB?createDatabaseIfNotExist=1 -Dspring.datasource.username=root -Dspring.datasource.password=$PASS_DB -Dserver.port=8080 -Dlogging.file=/var/log/bbjetmobile-$NAME_DB.log bbjet-mobile-api-*.jar
 }
 
 function start {
