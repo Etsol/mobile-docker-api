@@ -25,6 +25,8 @@ function start {
         fi
 }
 
+# Limitar la memoria al máximo permitido
+ulimit -m $((${MAX_MEM}*1024))
 cd /home/api/build/libs
 if [ ! -f bbjet-mobile-api-*.jar ]; then
         echo "********>> Building"
