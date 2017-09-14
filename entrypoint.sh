@@ -28,4 +28,4 @@ if [[ -z "${JMX_HOST}" ]]; then
 fi
 
 
-/bin/sh -c "java -jar $JAVA_OPTS -Dspring.datasource.url=jdbc:mariadb://$IP_DB:3306/$NAME_DB?createDatabaseIfNotExist=1 -Dspring.datasource.username=root -Dspring.datasource.password=$PASS_DB -Dserver.port=8080 -Dlogging.file=/home/api/bbjetmobile-$NAME_DB.log bbjet-mobile-api-$VERSION-SNAPSHOT.jar"
+/bin/sh -c "java -jar $JAVA_OPTS -Dspring.datasource.url=jdbc:mariadb://$IP_DB:3306/$NAME_DB?createDatabaseIfNotExist=1 -Dspring.datasource.username=root -Dspring.datasource.password=$PASS_DB -Dserver.port=8080 -Dlogging.file=/home/api/bbjetmobile-$NAME_DB.log /home/api/bbjet-mobile-api-$VERSION-SNAPSHOT.jar"
