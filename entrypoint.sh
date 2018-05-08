@@ -28,7 +28,7 @@ if [[ ! -z "${JMX_HOST}" ]]; then
 fi
 
 # Timeout retrofit
-if [[ ! -z "${RETROFIT_TIMEOUT}" ]]; then
+if [[ -z "${RETROFIT_TIMEOUT}" ]]; then
    RETROFIT_TIMEOUT=60
 fi
 
