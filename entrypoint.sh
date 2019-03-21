@@ -32,4 +32,8 @@ if [[ -z "${RETROFIT_TIMEOUT}" ]]; then
    RETROFIT_TIMEOUT=60
 fi
 
-/bin/sh -c "java -jar $JAVA_OPTS -Dspring.datasource.url=jdbc:mariadb://$IP_DB:3306/$NAME_DB?createDatabaseIfNotExist=1 -Dspring.datasource.username=root -Dspring.datasource.password=$PASS_DB -Dserver.port=8080 -Dlogging.file=/home/api/bbjetmobile-$NAME_DB.log -Dretrofit.timeout=$RETROFIT_TIMEOUT /home/api/bbjet-mobile-api-$VERSION-SNAPSHOT.jar"
+if [ $ENABLE != "true" ]; then
+   $ENABLE = "false"
+fi
+
+/bin/sh -c "java -jar $JAVA_OPTS -Dspring.datasource.url=jdbc:mariadb://$IP_DB:3306/$NAME_DB?createDatabaseIfNotExist=1 -Dspring.datasource.username=root -Dspring.datasource.password=$PASS_DB -Dserver.port=8080 -Dlogging.file=/home/api/bbjetmobile-$NAME_DB.log -Dretrofit.timeout=$RETROFIT_TIMEOUT -Dbbjetmobile.device.force_enable=$ENABLE /home/api/bbjet-mobile-api-$VERSION-SNAPSHOT.jar"
