@@ -4,11 +4,12 @@
 
 FROM java:8u111-alpine
 
-MAINTAINER Bruno Reato
-
 RUN apk update && \
     apk upgrade && \
-    apk add unzip
+    apk add --no-cache tzdata unzip
+
+RUN cp /usr/share/zoneinfo/America/Argentina/Buenos_Aires /etc/localtime
+RUN echo "America/Argentina/Buenos_Aires" >  /etc/timezone
 
 #Entrypoint
 ADD entrypoint.sh /entrypoint.sh
