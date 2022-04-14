@@ -3,6 +3,8 @@
 # Verificar si existe la versión, sino descargarla
 ./download-version.sh $VERSION
 
+mkdir -p /home/api
+
 cd /home/api
 
 JAVA_OPTS=
